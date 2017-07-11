@@ -30,6 +30,8 @@ bfastpp(data, order = 3,
     The \code{"trend"} or \code{"seasonal"} component or both from \code{\link[stats]{stl}}
     are removed from each column in \code{data}. By default (\code{"none"}), no STL
     adjustment is used.}
+  \item{...}{ Further options to \code{stlplus}. See \code{?stlplus}}
+
 }
 
 \details{

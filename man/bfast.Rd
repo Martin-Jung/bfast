@@ -37,6 +37,9 @@ bfast(Yt, h = 0.15, season = c("dummy", "harmonic", "none"),
   test; if a length 2 vector is passed, the first value is used for the trend,
   the second for the seasonality }
   \item{type}{character, indicating the type argument to \link[strucchange]{efp}}
+  
+  \item{...}{Further arguments passed to \link[stlplus]{stlplus}}
+
 }
 
 \details{To be completed.}

@@ -1,17 +1,15 @@
 bfastpp <- function(data, order = 3,
   lag = NULL, slag = NULL, na.action = na.omit,
-  stl = c("none", "trend", "seasonal", "both"))
+  stl = c("none", "trend", "seasonal", "both"), ... )
 {
-	## double check what happens with 29-02 if that happens...
-	## we should keep it simple an remove the datum if that happens
-	
+  if(!require("stlplus",quietly = T)) stop("Please install the stlplus package!")
 	if(!is.ts(data)) data <- as.ts(data)
 
   ## STL pre-processing to try to adjust for trend or season
   stl <- match.arg(stl)
   if(stl != "none") {
     stl_adjust <- function(x) {
-      x_stl <- stats::stl(x, s.window = "periodic")$time.series
+      x_stl <- stlplus::stlplus(x, s.window = "periodic", ...)$data
       switch(stl,
         "trend" = x - x_stl[, "trend"],
         "seasonal" = x - x_stl[, "seasonal"],
